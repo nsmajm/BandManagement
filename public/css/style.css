@@ -1,0 +1,13 @@
+.empty-separator{
+        padding-bottom: 60px;
+}
+
+.searchcenter {
+        position: relative;
+        left: 26%!important;
+}
+
+.userdetails{
+        border: 1px solid red;
+}
+
