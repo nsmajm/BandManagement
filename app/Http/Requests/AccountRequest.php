@@ -31,6 +31,7 @@ class AccountRequest extends FormRequest
             'Dob'              =>'required',
             'Password'         =>'required|min:8|max:50',
             'ConfirmPassword'  =>'required|same:Password',
+
         ];
     }
     public function messages()

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Hello, world!</title>
+    <title>User Login</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,8 +13,32 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 </head>
 <body>
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-9">
+            <div class="row">
+                @if(session()->has('sessioncheck'))
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                Please Login To Access The Page
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                @endif
+        </div>
+    </div>
+</div>
 <div class="container ">
+
+
     <div style="margin-top: 150px!important" class="row">
+
         <div class="offset-md-2 col-md-8 ">
             <table class="table table-bordered">
                 <tr>
@@ -58,7 +82,9 @@
                 @endif
                 </td>
         </div>
+
     </div>
+
 </div>
 
 <!-- Optional JavaScript -->

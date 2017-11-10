@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AccountRequest;
 use Carbon\Carbon;
+use Faker\Provider\DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\accounts;
+use app\Contents;
 class AccountController extends Controller
 {
     /**
@@ -27,6 +29,8 @@ class AccountController extends Controller
     public function create()
     {
         //
+
+
     }
 
 
@@ -38,9 +42,7 @@ class AccountController extends Controller
         $user->username     = $request->UserName;
         $user->email        = $request->Email;
         $user->password     = $request->Password;
-        $user->joindate     = Carbon::now('Asia/Dhaka');
         $user->dob          =$request->Dob;
-
         $user->save();
         return redirect()->route('login.index');
 
@@ -83,14 +85,27 @@ class AccountController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $id = $request->accountId;
-        $acc = accounts::find($id);
 
-        $acc->accName = $request->accountName;
+        $account = accounts::find($id);
+        $account->firstname = $request->FirstName;
+        $account->lastname = $request->LastName;
+        $account->dob = $request->Dob;
 
-        $acc->save();
-        //return redirect()->route('account.index');
-        return redirect()->route('account.show', $acc->accId);
+        if($request->hasFile('ProfileImage'))
+        {
+        $file = $request->file('ProfileImage');
+        $filename= $account->userid.'-'.rand(1000,9999);
+        $file->move('uploads', $filename);
+        $account->profileimage=$filename;
+        }
+        else{
+            $filename= session()->get('loggedUser')->profileimage;
+            $account->profileimage=$filename;
+        }
+
+        $account->save();
+        return redirect()->route('home.index')->with('updatemessage','Your Profile Updated');
+
     }
 
     /**
@@ -102,6 +117,15 @@ class AccountController extends Controller
     public function destroy($id)
     {
 
+
+    }
+
+    public function ShowPost($id)
+    {
+        $account =DB::table('accounts')
+            ->join('Contents','Contents.userid','=','accounts.userid')
+            ->where('accounts.userid',$id)->first();
+        return view ('User.details')->with('post',$account);
 
     }
 }

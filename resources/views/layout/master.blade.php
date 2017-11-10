@@ -14,9 +14,37 @@
 </head>
 <body>
 <!-- Nav Menu start -->
-<div class="container backgroundiamge">
+@if(session()->has('updatemessage'))
+    <div class="container">
+        <div class="row">
+                <div class="offset-md-3 col-md-6">
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        Your Profile Successfully updated
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+        </div>
+    </div>
+    @endif
+    @if(session()->has('videoupload'))
+    <div class="container">
+        <div class="row">
+                <div class="offset-md-3 col-md-6">
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        File Successfully Uploaded
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+        </div>
+    </div>
+    @endif
+<div class="container-fluid backgroundiamge">
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="container-fluid navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -46,11 +74,15 @@
             <ul class="nav navbar-nav navbar-right">
 
                 @if(session()->has('loggedUser'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('file.index')}}">Uploads</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="position:relative; padding-left:50px;">
-                            <img src="https://i.pinimg.com/236x/84/98/3d/84983d8f1d03ed533104945dae8ca024--generators-avatar.jpg" style="width:32px; height:32px; position:absolute; top:2px; left:10px; border-radius:50%">
+                            <img src="/uploads/{{session()->get('loggedUser')->profileimage}}" style="width:32px; height:32px; position:absolute; top:2px; left:10px; border-radius:50%">
                             {{session()->get('loggedUser')->username}}
                         </a>
+
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
                             <a class="dropdown-item" href="{{route('account.show', session()->get('loggedUser')->userid)}}">view Profile</a>
@@ -99,9 +131,15 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
-    $( function() {
-        $( "#datepicker" ).datepicker();
-    } );
+
+    $(function() {
+        $("#datepicker").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            yearRange: '1970:2017'
+        });
+    });
+
 </script>
 </body>
 </html>

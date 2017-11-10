@@ -11,9 +11,8 @@
        </div>
         <div class="row ">
             <div class="col-md-4">
-                <li style="list-style: none"><img src="{{asset('images/NoProfile.jpg')}}" class="img-thumbnail"></li>
-                <li style="list-style: none"> <h3>Description:</h3></li>
-                <li style="list-style: none">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a </li>
+                <li style="list-style: none"><img src="/uploads/{{$account->profileimage}}" class="img-thumbnail"></li>
+
 
             </div>
             <div  class="col-md-8">
@@ -34,14 +33,11 @@
                         <td>25-10-1994</td>
 
                     </tr>
-                    <tr>
-                        <th>Join Date</th>
-                        <td>{{$account->joindate}}</td>
 
-                    </tr>
                     </tbody>
                 </table>
                 <div class="alert alert-info">Your Recent Post</div>
+                  {{dd($post)}}
             </div>
         </div>
        @endsection
