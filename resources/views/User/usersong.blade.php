@@ -10,13 +10,13 @@
             @foreach($post as $content)
 
                 <div class="col-md-3" style="padding-bottom: 30px;border: 1px solid #efefef">
-                    <a href="#"> <img src="/uploads/{{$content->filepicture}}" alt="" class="img-thumbnail"style="height: 257px !important;"></a>
+                    <a href="{{route('file.showsong',$content->fileid)}}"> <img src="/uploads/file/{{$content->filepicture}}" alt="" class="img-thumbnail"style="height: 257px !important;"></a>
                     <div class="description">
-                      <a class="pull-left" href="#">{{$content->username}}</a>
-                        <a class="pull-right" href="#">{{$content->category}}</a>
+                      <span class="pull-left">Author Name :</span><a class="pull-left" href="#">{{$content->username}}</a>
+                        <span style="padding-left: 30px">Category Name :</span> <a class="pull-right" href="#">{{$content->category}}</a>
                         <hr>
                        <div class="title">
-                           <h4><a href="#">{{$content->filename}}</a></h4>
+                           <p><a style="color: #000;padding-bottom: 10px" href="{{route('file.showsong',$content->fileid)}}">{{$content->filename}}</a></p>
                        </div>
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 <?php
-
+echo "server.php";
 /**
  * Laravel - A PHP Framework For Web Artisans
  *

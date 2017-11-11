@@ -48,16 +48,16 @@ class fileController extends Controller
         if($request->hasFile('UploadFile'))
         {
             $file = $request->file('UploadFile');
-            $filename= session()->get('loggedUser')->userid.'-'.rand(1000,9999);
-            $file->move('uploads', $filename);
+            $filename= session()->get('loggedUser')->userid.'-'.rand(1000,9999).'.'.$file->getClientOriginalExtension();
+            $file->move('uploads/file', $filename);
             $fileupload->file=$filename;
 
         }
         if($request->hasFile('Thumbnail'))
         {
             $file = $request->file('Thumbnail');
-            $filename= session()->get('loggedUser')->userid.'-'.rand(1000,9999);
-            $file->move('uploads', $filename);
+            $filename= session()->get('loggedUser')->userid.'-'.rand(1000,9999).'.'.$file->getClientOriginalExtension();
+            $file->move('uploads/file', $filename);
             $fileupload->filepicture=$filename;
 
         }
@@ -82,8 +82,9 @@ class fileController extends Controller
     }
     public function showsong($id)
     {
+        $song = DB::table('Contents')->where('fileid', $id)->first();
 
-
+        return view('User.single')->with('song',$song);
     }
     /**
      * Show the form for editing the specified resource.

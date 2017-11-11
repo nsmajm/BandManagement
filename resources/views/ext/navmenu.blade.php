@@ -41,7 +41,7 @@
 <div class="container-fluid">
 
     <nav class="navmenu navbar navbar-expand-lg navbar-light bg-light" style="background-color: #000 !important;">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">BANDMANAGEMENT</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="fa fa-bars"aria-hidden="true" ></span>
         </button>

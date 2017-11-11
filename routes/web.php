@@ -16,7 +16,7 @@ Route::get('/register','AccountController@index')->name('account.index');
 Route::post('/register','AccountController@store')->name('account.store');
 Route::get('/login','LoginController@index')->name('login.index');
 Route::post('/login','LoginController@checkLogin')->name('login.Check');
-
+Route::get('/showsongs/{id}','fileController@showsong')->name('file.showsong');
 
 Route::group(['middleware' => ['SessionCheck']],function (){
     Route::get('/accounts/{id}', 'AccountController@show')->name('account.show');
@@ -26,6 +26,6 @@ Route::group(['middleware' => ['SessionCheck']],function (){
     Route::get('/upload','fileController@index')->name('file.index');
     Route::post('/upload','fileController@store')->name('file.index');
     Route::get('/usersong/{id}','fileController@show')->name('file.show');
-   // Route::get('/showsongs/{id}','fileController@showsong')->name('file.showsong');
+
 });
 
