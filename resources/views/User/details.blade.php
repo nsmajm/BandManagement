@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layout.userLayout')
     @section('title')
         welcome {{$account->firstname}}
         @endsection
@@ -36,8 +36,7 @@
 
                     </tbody>
                 </table>
-                <div class="alert alert-info">Your Recent Post</div>
-                  {{dd($post)}}
+
             </div>
         </div>
        @endsection

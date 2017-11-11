@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Contents;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use function MongoDB\BSON\toJSON;
 
 class fileController extends Controller
@@ -74,9 +75,16 @@ class fileController extends Controller
      */
     public function show($id)
     {
-        //
+        $account =DB::table('accounts')
+            ->join('Contents','Contents.userid','=','accounts.userid')
+            ->where('accounts.userid',$id)->get();
+        return view ('User.usersong')->with('post',$account);
     }
+    public function showsong($id)
+    {
 
+
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -110,4 +118,5 @@ class fileController extends Controller
     {
         //
     }
+
 }

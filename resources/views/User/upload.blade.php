@@ -1,10 +1,11 @@
-@extends('layout.master')
+@extends('layout.userLayout')
 
 @section('title')
     Upload Video
     @endsection
 @section('maincontent')
-        <div class="videoupload">
+    <div class="container">
+        <div class="videoupload col-md-9">
             <form method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="form-group row">
@@ -38,7 +39,7 @@
                 <div class="form-group row">
                     <label for="UploadFile" class="col-sm-2 col-form-label">Upload File</label>
                     <div class="col-sm-10">
-                        <input type="file"  class="form-control" id="UploadFile" name="UploadFile">
+                        <input type="file"  class="form-control" id="UploadFile" name="UploadFile"accept="video/*">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -53,4 +54,5 @@
 
             </form>
         </div>
+    </div>
     @endsection

@@ -120,12 +120,5 @@ class AccountController extends Controller
 
     }
 
-    public function ShowPost($id)
-    {
-        $account =DB::table('accounts')
-            ->join('Contents','Contents.userid','=','accounts.userid')
-            ->where('accounts.userid',$id)->first();
-        return view ('User.details')->with('post',$account);
 
-    }
 }

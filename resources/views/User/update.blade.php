@@ -1,21 +1,23 @@
-@extends('layout.master')
+@extends('layout.userLayout')
 
 @section('title')
     Update User
 @endsection
 @section('maincontent')
-    <div class="container-fluid">
-        <h1>Edit Profile</h1>
-        <hr>
+    <div class="container table-bordered" >
+        <div class="row">
+            <div class="offset-md-3 col-md-9">
+                <div class="alert alert-success"style="position:relative;right: 14%;">
+                    <h3 style="text-align: center">Personal info</h3>
+                </div>
+            </div>
+        </div>
         <div class="row">
 
 
             <!-- edit form column -->
             <div class="offset-md-3 col-md-9 personal-info">
-                <div class="alert alert-success">
-                    <i class="fa fa-coffee"></i>
-                    <h3>Personal info</h3>
-                </div>
+
 
 
                 <form class="form-horizontal" method="post" enctype="multipart/form-data">
