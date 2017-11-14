@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-
-class LoginController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +13,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return view('user.login');
+        return view('admin.dashboard');
     }
 
     /**
@@ -79,34 +77,8 @@ class LoginController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy($id)
     {
-        session()->flush();
-        return redirect()->route('home.index');
-    }
-    public function checkLogin(Request $request){
-        $user = DB::table('accounts')
-            ->where('username', $request->UserName)
-            ->where('password', $request->Password)
-            ->first();
-
-        if($user != null)
-        {
-            $request->session()->put('loggedUser', $user);
-            if($request->session()->get('loggedUser')->usertype != "admin")
-            {
-                return redirect()->route('home.index');
-            }
-            else{
-                return redirect()->route('admin.index');
-            }
-
-        }
-        else
-        {
-            $request->session()->flash('username', $request->UserName);
-            $request->session()->flash('message', 'Invalid username or password');
-            return redirect()->route('login.index');
-        }
+        //
     }
 }

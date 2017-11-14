@@ -27,5 +27,12 @@ Route::group(['middleware' => ['SessionCheck']],function (){
     Route::post('/upload','fileController@store')->name('file.index');
     Route::get('/usersong/{id}','fileController@show')->name('file.show');
 
+
+
+    Route::group(['middleware' => ['admin']],function (){
+        Route::get('/admin/dashboard','AdminController@index')->name('admin.index');
+    });
+
+
 });
 
